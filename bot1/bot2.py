@@ -19,6 +19,10 @@ from telebot.types import (
     ChatJoinRequest,
 )
 
+start_msg = start_msg.replace("Remedial", "Freshman")
+about_us_msg = about_us_msg.replace("Remedial", "Freshman").replace(
+    "remedial", "freshman"
+)
 
 bot = TeleBot(settings.BOT_TOKEN2, parse_mode="HTML", threaded=False)
 
