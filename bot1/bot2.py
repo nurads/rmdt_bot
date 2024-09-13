@@ -20,15 +20,15 @@ from telebot.types import (
 )
 
 
-bot = TeleBot(settings.BOT_TOKEN, parse_mode="HTML", threaded=False)
+bot = TeleBot(settings.BOT_TOKEN2, parse_mode="HTML", threaded=False)
 
 bot_number = 2
 
 tg_channel_url_natural = "https://t.me/+BkNC18yzWiIwNmRk"
 tg_channel_url_social = "https://t.me/+8MTwQ16Xx5FmNWJk"
 
-tg_channel_id_natural = -1002427871456
-tg_channel_id_social = -1002426643683
+tg_channel_id_natural = -1002419752883
+tg_channel_id_social = -1002462494621
 bot_name = "Freshman Tricks Bot"
 pricing = 500
 
@@ -133,6 +133,7 @@ def contact_handler(message):
     contact.first_name = con.first_name
     contact.last_name = con.last_name
     contact.phone_number = con.phone_number
+    contact.username = message.from_user.username
     contact.save()
 
     if iscreated:
@@ -426,6 +427,23 @@ def approve_chat_join(call: CallbackQuery):
         time.sleep(2)
         bot.delete_message(call.message.chat.id, msg.id)
         bot.delete_message(call.message.chat.id, msg1.id)
+
+
+@bot.callback_query_handler(
+    func=lambda call: re.match("_decline_chat_-?\\d+_user_-?\\d+", call.data)
+)
+def decline_chat_join(call: CallbackQuery):
+    data = call.data.split("_")
+    user_id = int(data[-1])
+    chat_id = int(data[3])
+    try:
+        bot.delete_message(call.message.chat.id, call.message.id)
+        bot.decline_chat_join_request(chat_id, user_id)
+        msg = bot.send_message(call.message.chat.id, "Declined🚫")
+        time.sleep(1)
+        bot.delete_message(call.message.chat.id, msg.id)
+    except Exception as e:
+        pass
 
 
 ########################### Chat Join Request ########################################

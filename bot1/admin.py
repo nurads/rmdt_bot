@@ -9,6 +9,7 @@ class ContactAdmin(admin.ModelAdmin):
         "phone_number",
         "first_name",
         "last_name",
+        "reg_completed",
         "username",
         "grade",
         "stream",

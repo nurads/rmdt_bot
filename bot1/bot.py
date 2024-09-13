@@ -133,6 +133,7 @@ def contact_handler(message):
     contact.first_name = con.first_name
     contact.last_name = con.last_name
     contact.phone_number = con.phone_number
+    contact.username = message.from_user.username
     contact.save()
 
     if iscreated:
@@ -426,6 +427,23 @@ def approve_chat_join(call: CallbackQuery):
         time.sleep(2)
         bot.delete_message(call.message.chat.id, msg.id)
         bot.delete_message(call.message.chat.id, msg1.id)
+
+
+@bot.callback_query_handler(
+    func=lambda call: re.match("_decline_chat_-?\\d+_user_-?\\d+", call.data)
+)
+def decline_chat_join(call: CallbackQuery):
+    data = call.data.split("_")
+    user_id = int(data[-1])
+    chat_id = int(data[3])
+    try:
+        bot.delete_message(call.message.chat.id, call.message.id)
+        bot.decline_chat_join_request(chat_id, user_id)
+        msg = bot.send_message(call.message.chat.id, "Declined🚫")
+        time.sleep(1)
+        bot.delete_message(call.message.chat.id, msg.id)
+    except Exception as e:
+        pass
 
 
 ########################### Chat Join Request ########################################
