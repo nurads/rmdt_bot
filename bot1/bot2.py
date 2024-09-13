@@ -427,6 +427,7 @@ def approve_chat_join(call: CallbackQuery):
             call.message.chat.id,
             "Will be approved by the bot automatically when requested👍",
         )
+        print(e)
         msg = bot.send_message(call.message.chat.id, str(e))
         time.sleep(2)
         bot.delete_message(call.message.chat.id, msg.id)
