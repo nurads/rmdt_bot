@@ -16,7 +16,7 @@ BOT_TOKEN2 = env("BOT_TOKEN2")
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", ".vercel.app"]
 
 AUTH_USER_MODEL = "bot1.User"
 INSTALLED_APPS = [
