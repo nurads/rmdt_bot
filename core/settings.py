@@ -2,7 +2,9 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 import os
+from django.core.management.utils import get_random_secret_key
 
+# get_random_secret_key()
 load_dotenv()
 env = os.environ.get
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,12 +12,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env("SECRET_KEY")
 BOT_TOKEN = env("BOT_TOKEN")
+BOT_TOKEN2 = env("BOT_TOKEN2")
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = "bot1.User"
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",

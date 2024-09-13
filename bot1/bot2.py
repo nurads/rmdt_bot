@@ -1,5 +1,5 @@
 """
-This is Remedial Tricks Bot
+This is Freshman Tricks Bot
 Developer @nurads
 """
 
@@ -19,10 +19,9 @@ from telebot.types import (
     ChatJoinRequest,
 )
 
+bot = TeleBot(settings.BOT_TOKEN2, parse_mode="HTML", threaded=False)
 
-bot = TeleBot(settings.BOT_TOKEN, parse_mode="HTML", threaded=False)
-
-bot_number = 1
+bot_number = 2
 
 tg_channel_url_social = "https://t.me/+A17J9kDWstcxMjBk"
 tg_channel_url_natural = "https://t.me/+ysuPgHQ-S1M5NjBk"
