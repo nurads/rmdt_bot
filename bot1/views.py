@@ -27,4 +27,6 @@ def webhook2(request, *args, **kwargs):
 
 
 def test(request):
-    return JsonResponse("Bot Deployed Succesfully on /webhook/", safe=False)
+    return JsonResponse(
+        "Bots are deployed  Succesfully on /bot1/ and /bot2/", safe=False
+    )

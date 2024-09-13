@@ -13,6 +13,6 @@ class Command(BaseCommand):
     def handle(self, *args: Any, **options: Any):
         bot_number = options.get("bot")
         if bot_number == 1:
-            bot.set_webhook("https://rmdt-bot.vercel.app/bot1/")
+            bot.remove_webhook()
         elif bot_number == 2:
-            bot2.set_webhook("https://rmdt-bot.vercel.app/bot2/")
+            bot.remove_webhook()
