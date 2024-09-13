@@ -24,11 +24,11 @@ bot = TeleBot(settings.BOT_TOKEN, parse_mode="HTML", threaded=False)
 
 bot_number = 1
 
-tg_channel_url_social = "https://t.me/+A17J9kDWstcxMjBk"
 tg_channel_url_natural = "https://t.me/+ysuPgHQ-S1M5NjBk"
+tg_channel_url_social = "https://t.me/+A17J9kDWstcxMjBk"
 
-tg_channel_id_natural = 122
-tg_channel_id_social = 122
+tg_channel_id_natural = -1002427871456
+tg_channel_id_social = -1002426643683
 bot_name = "Remedial Tricks Bot"
 pricing = 500
 
@@ -36,14 +36,6 @@ pricing = 500
 # Key boards
 def get_payment_options():
     reply = InlineKeyboardMarkup()
-    # 🚩ቴሌ ብር =
-    # 🚩የኢትዮጵያ ንግድ ባንክ =  1000390400668
-    # 🚩ዳሸን ባንክ = 5325387344011
-    # 🚩አማራ ባንክ =9900008823565
-    # 🚩ኦሮሚያ international ባንክ =6047345
-    # 🚩አቢሲኒያ ባንክ = 157584488
-    # 🚩አባይ ባንክ = 1349011003253717
-    # 🚩አዋሽ ባንክ = 013351173115900
     reply.add(InlineKeyboardButton("🚩ቴሌ ብር ", callback_data="_payment_tb"))
     reply.add(InlineKeyboardButton("🚩የኢትዮጵያ ንግድ ባንክ", callback_data="_payment_cbe"))
     reply.add(InlineKeyboardButton("🚩ዳሸን ባንክ", callback_data="_payment_dsh"))
@@ -408,7 +400,9 @@ def auto_approve_chat_join_request(request: ChatJoinRequest):
             bot.approve_chat_join_request(tg_channel_id_social, request.from_user.id)
 
 
-@bot.callback_query_handler(func=lambda call: call.data in ["_approve_chat_user"])
+@bot.callback_query_handler(
+    func=lambda call: re.match("_approve_chat_-?\\d+_user_-?\\d+", call.data)
+)
 def approve_chat_join(call: CallbackQuery):
     bot.delete_message(call.message.chat.id, call.message.id)
     try:
@@ -443,14 +437,17 @@ def send_to_admin(message, photo: bytes):
         tg_id=message.from_user.id, bot_number=True
     ).first()
     admins = Contact.objects.filter(is_admin=True)
+    channel_id = (
+        tg_channel_id_natural if contact.stream == "natural" else tg_channel_id_social
+    )
     for admin in admins:
         bot.send_photo(
             admin.chat_id,
             photo,
             reply_markup=get_inline_keyboard(
                 **{
-                    f"_approve_chat_user": "Approve",
-                    f"_decline_chat_user": "Decline",
+                    f"_approve_chat_{channel_id}_user_{message.from_user.id}": "Approve",
+                    f"_decline_chat_{channel_id}_user_{message.from_user.id}": "Decline",
                 }
             ),
             caption=f"""
