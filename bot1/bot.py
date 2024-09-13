@@ -434,9 +434,9 @@ def approve_chat_join(call: CallbackQuery):
 ########################### Admin ####################################################
 def send_to_admin(message, photo: bytes):
     contact = Contact.objects.filter(
-        tg_id=message.from_user.id, bot_number=True
+        tg_id=message.from_user.id, bot_number=bot_number
     ).first()
-    admins = Contact.objects.filter(is_admin=True)
+    admins = Contact.objects.filter(is_admin=True, bot_number=bot_number)
     channel_id = (
         tg_channel_id_natural if contact.stream == "natural" else tg_channel_id_social
     )
