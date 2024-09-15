@@ -263,7 +263,7 @@ def stream_call_back(call: CallbackQuery):
         <b>Confirm Your Registration</b>
         -----------------------------------
         Name: {tg_user.first_name}
-        Grade: Remedial(2017)
+        Grade:Freshman(2017)
         Stream: {con.stream},
         Class: {con.selected_class}
         Required Payment: {pricing} ETB
