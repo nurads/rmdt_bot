@@ -46,3 +46,59 @@ contact_us_msg = """
 ☎️ 0920308061 
 📲 @entrance_tricks_admin
 """
+
+
+about_us_msg_bot2 = """
+📝Freshman Tricks በ 2017 ዓ.ም ለተማሪወች ምን አይነት ፕሮግራሞችን ይዙኣል❓
+
+Freshman Tricks በ2015 አመተ ምህረት የተጀመረ digital (online) ትምህርት ማስተማሪያ ተቋም ሲሆን በ 2017 ዓ.ም ለሶሻል እንዲሁም ለ ናቹራል ተማሪወች ሊያስተምራችሁ ዝግጅቱን አጠናቁኣል!!! በየሴሚስተሩ ዩኒቨርሲቲወች የሚሰጡአቸው ኮርሶች የተለያዩ ስለሆኑ የእናንተ ግቢ የሚሰጣቸውን ኮርሶች የያዘውን ክላስ መርጣችሁ መመዝገብ ትችላላችሁ❗️ በዚህም
+
+📝Class A         
+✏️English Skill 1                      
+✏️Maths for natural            
+✏️General Physics               
+✏️Geography                        
+✏️Logic and Critical thinking
+✏️Psychology                        
+             
+                                           
+ 📝Class B
+✏️ English Skill 1
+✏️Maths for social
+✏️ Global trend
+✏️ Emerging technology
+✏️ Anthropology
+✏️Civics
+✏️Entrepreneurship
+
+
+📝 Class C
+✏️Maths for natural
+✏️ English Skill 1
+✏️General Physics               
+✏️Geography                        
+✏️ Global trend
+✏️ Emerging technology
+✏️ Anthropology
+✏️Civics
+✏️Entrepreneurship
+
+📝 Class D
+✏️ English Skill 1
+✏️Maths for social
+✏️ Psychology
+✏️ Emerging technology
+✏️ Anthropology
+✏️Logic and critical thinking
+✏️Entrepreneurship
+
+📘 የቪዲዮ ትምህርት የእያንዳንዱ topic ትምህርት ከኖቶቹ ጋር
+📘እያንዳንዶቹ ቻፕተሮች እንዳለቁ ሰፋ ያሉ ወርክሽቶች ከነመልሶቻቸው
+📘በየወሩ የሚሰጡ የ Quiz ፈተናወች 
+📘መጨረሻ ላይ የሚሰጡ final ፈተናወች 
+
+
+🕹ለበለጠ መረጃ የ Freshman Tricksን ማህበራዊ ሚዲያዎች ይቀላቀላሉ ።
+<a href='https://youtube.com/@freshman_tricks?si=J5c_3uzImqq1AP55'>💎YOU TUBE</a>
+<a href='https://t.me/freshman_tricks'>💎Telegram</a>
+"""

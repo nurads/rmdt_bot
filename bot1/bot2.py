@@ -20,9 +20,7 @@ from telebot.types import (
 )
 
 start_msg = start_msg.replace("Remedial", "Freshman")
-about_us_msg = about_us_msg.replace("Remedial", "Freshman").replace(
-    "remedial", "freshman"
-)
+about_us_msg = about_us_msg_bot2
 
 bot = TeleBot(settings.BOT_TOKEN2, parse_mode="HTML", threaded=False)
 
@@ -31,13 +29,19 @@ bot_number = 2
 tg_channel_url_natural = "https://t.me/+BkNC18yzWiIwNmRk"
 tg_channel_url_social = "https://t.me/+8MTwQ16Xx5FmNWJk"
 
-tg_channel_id_natural = -1002419752883
-tg_channel_id_social = -1002462494621
+# tg_channel_id_natural = -1002419752883
+# tg_channel_id_social = -1002462494621
 bot_name = "Freshman Tricks Bot"
 pricing = 500
 
+channels = {
+    "class a": {"link": "https://t.me/+BkNC18yzWiIwNmRk", "id": -1002419752883},
+    "class b": {"link": "https://t.me/+8MTwQ16Xx5FmNWJk", "id": -1002462494621},
+    "class c": {"link": "https://t.me/+JuEqcFOCJno2MDc0", "id": -1002473698743},
+    "class d": {"link": "https://t.me/+zdID3XkJ3MQ2MmZk", "id": -1002384868135},
+}
 
-# Key boards
+
 def get_payment_options():
     reply = InlineKeyboardMarkup()
     reply.add(InlineKeyboardButton("🚩ቴሌ ብር ", callback_data="_payment_tb"))
@@ -85,9 +89,6 @@ def get_inline_keyboard(**kwargs):
     return markup.add(*buttons)
 
 
-############################### Generics ##########################################
-
-
 @bot.message_handler(commands=["start", "restart"])
 @bot.message_handler(func=lambda msg: msg.text.lower() in ["start", "restart"])
 def start_hadler(message):
@@ -118,10 +119,6 @@ def contactus_handler(message):
     bot.send_message(message.chat.id, contact_us_msg)
 
 
-############################### Generics ##########################################
-
-
-######################## Telegram Contact Submit ########################################
 @bot.message_handler(content_types=["contact"])
 def contact_handler(message):
     con = message.contact
@@ -153,10 +150,6 @@ def contact_handler(message):
 
     bot.delete_message(message.chat.id, msg1.id)
     reg_handler(message)
-
-
-######################## Telegram Contact Submit ########################################
-############################ Receipt Upload Handler ######################################
 
 
 def receipt_upload_handler(message: Message):
@@ -191,24 +184,27 @@ def receipt_upload_handler(message: Message):
     if not con:
         bot.send_message(message.chat.id, "Share your Contact")
         return
-    if con.stream == "natural":
-        bot.send_message(
-            message.chat.id,
-            tg_channel_url_natural,
-            reply_markup=get_keyboard(),
-        )
-    else:
-        bot.send_message(
-            message.chat.id,
-            tg_channel_url_social,
-            reply_markup=get_keyboard(),
-        )
+    msg = f"""Join Channel below
+{channels[con.selected_class]['link']}
+    
+<b>NB. It will be approved if the receipt is valid</b>
+    """
+
+    bot.send_message(message.chat.id, msg, reply_markup=get_keyboard())
+    # if con.stream == "natural":
+    #     bot.send_message(
+    #         message.chat.id,
+    #         tg_channel_url_natural,
+    #         reply_markup=get_keyboard(),
+    #     )
+    # else:
+    #     bot.send_message(
+    #         message.chat.id,
+    #         tg_channel_url_social,
+    #         reply_markup=get_keyboard(),
+    #     )
 
 
-############################ Receipt Upload Handler ######################################
-
-
-################################### Register ##############################################
 @bot.message_handler(commands=["register"])
 @bot.message_handler(func=lambda msg: msg.text == "📝 Register")
 def reg_handler(message, grade=None, stream=None):
@@ -237,23 +233,30 @@ def reg_handler(message, grade=None, stream=None):
     bot.send_message(
         message.chat.id,
         "What stream are you in?",
-        reply_markup=get_inline_keyboard(_natural="Natural", _social="Social").add(
-            InlineKeyboardButton("cancel", callback_data="cancel"),  # TODO
+        reply_markup=get_inline_keyboard(
+            _class_a="Class A",
+            _class_b="Class B",
+            _class_c="Class C",
+            _class_d="Class D",
+        ).add(
+            InlineKeyboardButton("cancel", callback_data="cancel"),
         ),
     )
 
 
-################################### Register ##############################################
-
-
-########################### Call Back Queries ########################################
-
-
-@bot.callback_query_handler(func=lambda call: call.data in ["_natural", "_social"])
+@bot.callback_query_handler(
+    func=lambda call: call.data
+    in ["_natural", "_social", "_class_a", "_class_b", "_class_c", "_class_d"]
+)
 def stream_call_back(call: CallbackQuery):
     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
     tg_user = call.from_user
-    con.stream = call.data.replace("_", "")
+    # con.stream = call.data.replace("_", "")
+    if call.data in ["_class_a", "_class_b"]:
+        con.stream = "natural"
+    else:
+        con.stream = "social"
+    con.selected_class = call.data.replace("_", " ").strip()
     con.save()
     bot.delete_message(call.message.chat.id, call.message.id)
     msg = f"""
@@ -261,15 +264,16 @@ def stream_call_back(call: CallbackQuery):
         -----------------------------------
         Name: {tg_user.first_name}
         Grade: Remedial(2017)
-        Stream: {con.stream}
+        Stream: {con.stream},
+        Class: {con.selected_class}
         Required Payment: {pricing} ETB
         """
     bot.send_message(
         call.message.chat.id,
         msg,
         reply_markup=get_inline_keyboard(reg_confirm="Confirm").add(
-            InlineKeyboardButton("back", callback_data="_edit_stream"),  # TODO
-            InlineKeyboardButton("cancel", callback_data="cancel"),  # TODO
+            InlineKeyboardButton("back", callback_data="_edit_stream"),
+            InlineKeyboardButton("cancel", callback_data="cancel"),
         ),
     )
 
@@ -288,7 +292,6 @@ def reg_confirm(call):
         tg_user = call.from_user
         con = Contact.objects.filter(tg_id=tg_user.id, bot_number=bot_number).first()
 
-        # con.selected_class = f"grade{con.grade.lower()}{con.stream.lower()}"
         con.save()
 
         bot.send_message(
@@ -296,26 +299,6 @@ def reg_confirm(call):
             "🌸የክፍያ አማራጮች🌸|Payment Options",
             reply_markup=get_payment_options(),
         )
-
-        # msg = f"""
-        # Choose which class you want to be in
-        # """
-        # reply = InlineKeyboardMarkup()
-        # reply.add(
-        #     InlineKeyboardButton("Full Special class", callback_data="full_special")
-        # )
-        # reply.add(
-        #     InlineKeyboardButton(
-        #         "Only English and Aptitude", callback_data="english_aptitude"
-        #     )
-        # )
-        # reply.add(
-        #     InlineKeyboardButton(
-        #         "Selective Special class(only 50% of 4 subjects)",
-        #         callback_data="selective_special",
-        #     )
-        # )
-        # bot.send_message(call.message.chat.id, msg, reply_markup=reply)
 
 
 @bot.callback_query_handler(func=lambda call: re.match(r"_payment_*", call.data))
@@ -386,23 +369,22 @@ def cancel(call):
     bot.delete_message(call.message.chat.id, call.message.id)
 
 
-########################### Call Back Queries ########################################
-
-########################### Chat Join Request ########################################
-
-
 @bot.chat_join_request_handler(func=lambda msg: True)
 def auto_approve_chat_join_request(request: ChatJoinRequest):
     print("Approving automatically!!!", request.chat.id)
     tg_user = request.from_user
     con = Contact.objects.filter(tg_id=tg_user.id, bot_number=bot_number).first()
     if con:
-        if not con.join_approved:
+        if (
+            not con.join_approved
+            or channels[con.selected_class]["id"] != request.chat.id
+        ):
             return
-        if con.stream == "natural" and tg_channel_id_natural == request.chat.id:
-            bot.approve_chat_join_request(tg_channel_id_natural, request.from_user.id)
-        elif tg_channel_id_social == request.chat.id:
-            bot.approve_chat_join_request(tg_channel_id_social, request.from_user.id)
+        bot.approve_chat_join_request(request.chat.id, request.from_user.id)
+        # bot.approve_chat_join_request(channels[con.selected_class])
+        # if con.stream == "natural" and tg_channel_id_natural == request.chat.id:
+        # elif tg_channel_id_social == request.chat.id:
+        #     bot.approve_chat_join_request(tg_channel_id_social, request.from_user.id)
 
 
 @bot.callback_query_handler(
@@ -451,18 +433,12 @@ def decline_chat_join(call: CallbackQuery):
         pass
 
 
-########################### Chat Join Request ########################################
-
-
-########################### Admin ####################################################
 def send_to_admin(message, photo: bytes):
     contact = Contact.objects.filter(
         tg_id=message.from_user.id, bot_number=bot_number
     ).first()
     admins = Contact.objects.filter(is_admin=True, bot_number=bot_number)
-    channel_id = (
-        tg_channel_id_natural if contact.stream == "natural" else tg_channel_id_social
-    )
+    channel_id = channels[contact.selected_class]["id"]
     for admin in admins:
         bot.send_photo(
             admin.chat_id,
@@ -481,8 +457,3 @@ def send_to_admin(message, photo: bytes):
             Grade: {contact.grade}
             Stream: {contact.stream}""",
         )
-
-
-########################### Admin ####################################################
-
-# bot.infinity_polling()
