@@ -455,5 +455,6 @@ def send_to_admin(message, photo: bytes):
             username: {contact.username}
             Phone: {contact.phone_number}
             Grade: {contact.grade}
-            Stream: {contact.stream}""",
+            Class: {contact.selected_class.capitalize()}
+            """,
         )
