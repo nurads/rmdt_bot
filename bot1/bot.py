@@ -31,6 +31,7 @@ tg_channel_id_natural = -1002427871456
 tg_channel_id_social = -1002426643683
 bot_name = "Remedial Tricks Bot"
 pricing = 500
+contact_us_msg = rm_contact_us
 
 
 # Key boards

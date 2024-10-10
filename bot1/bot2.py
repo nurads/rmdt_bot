@@ -25,7 +25,7 @@ about_us_msg = about_us_msg_bot2
 bot = TeleBot(settings.BOT_TOKEN2, parse_mode="HTML", threaded=False)
 
 bot_number = 2
-
+contact_us_msg = fr_contact_us
 tg_channel_url_natural = "https://t.me/+BkNC18yzWiIwNmRk"
 tg_channel_url_social = "https://t.me/+8MTwQ16Xx5FmNWJk"
 

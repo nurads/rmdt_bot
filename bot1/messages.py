@@ -102,3 +102,17 @@ Freshman Tricks በ2015 አመተ ምህረት የተጀመረ digital (online) 
 <a href='https://youtube.com/@freshman_tricks?si=J5c_3uzImqq1AP55'>💎YOU TUBE</a>
 <a href='https://t.me/freshman_tricks'>💎Telegram</a>
 """
+
+
+fr_contact_us = """
+🚩እኛን ለማግኘት (contact us)
+
+☎️ 0902100732
+📲 @FRESHMAN_TRICKS_ADMIN
+"""
+rm_contact_us = """
+🚩እኛን ለማግኘት (contact us)
+
+☎️ 0927052140
+📲 @REMEDIAL_TRICKS_ADMIN
+"""
