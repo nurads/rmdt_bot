@@ -18,18 +18,16 @@ Entrance Tricks
 about_us_msg = """
 📝Remedial Tricks በ 2017 ዓ.ም ለተማሪወች ምን አይነት ፕሮግራሞችን ይዙኣል❓
 
-Remedial Tricks በ2015 አመተ ምህረት የተጀመረ digital (online) ትምህርት ማስተማሪያ ተቋም ሲሆን በ 2017 ዓ.ም ለሶሻል እንዲሁም ለ ናቹራል ተማሪወች ሊያስተምራችሁ ዝግጅቱን አጠናቁኣል!!! በዚህም
-
-📝Natural                                📝 Social
-✏️English                                  ✏️ English
-✏️Mathematics                       ✏️ Mathematics
-✏️Physics                                  ✏️ Geography
-✏️Chemistry                             ✏️  History
-✏️Biology                                  ✏️ Economics
+📝Natural               📝 Social
+✏️English                ✏️ English
+✏️Mathematics      ✏️ Mathematics
+✏️Physics                 ✏️ Geography
+✏️Chemistry            ✏️  History
+✏️Biology                  
 
 📘 የቪዲዮ ትምህርት የእያንዳንዱ ክላስ ትምህርት ከኖቶቹ ጋር
 📘እያንዳንዶቹ ቻፕተሮች እንዳለቁ ሰፋ ያሉ ወርክሽቶች ከነመልሶቻቸው
-📘በየወሩ የሚሰጡ የ Quiz ፈተናወች
+📘በየሳምንቱ የሚሰጡ የ Quiz ፈተናወች
 📘ከ 2014-2016 ዓ.ም ያሉትን  የኢንትራንስ ጥያቄወች መልሶቻቸው ከሰፊ ማብራሪያ ጋር 
 📘መጨረሻ ላይ የሚሰጡ በኢንትራንስ ፎርም  የተዘጋጁ ኦንላይን ሞዴል ፈተናወች
 
@@ -51,15 +49,16 @@ contact_us_msg = """
 about_us_msg_bot2 = """
 📝Freshman Tricks በ 2017 ዓ.ም ለተማሪወች ምን አይነት ፕሮግራሞችን ይዙኣል❓
 
-Freshman Tricks በ2015 አመተ ምህረት የተጀመረ digital (online) ትምህርት ማስተማሪያ ተቋም ሲሆን በ 2017 ዓ.ም ለሶሻል እንዲሁም ለ ናቹራል ተማሪወች ሊያስተምራችሁ ዝግጅቱን አጠናቁኣል!!! በየሴሚስተሩ ዩኒቨርሲቲወች የሚሰጡአቸው ኮርሶች የተለያዩ ስለሆኑ የእናንተ ግቢ የሚሰጣቸውን ኮርሶች የያዘውን ክላስ መርጣችሁ መመዝገብ ትችላላችሁ❗️ በዚህም
 
 📝Class A         
 ✏️English Skill 1                      
-✏️Maths for natural            
+✏️Math for natural            
 ✏️General Physics               
 ✏️Geography                        
 ✏️Logic and Critical thinking
 ✏️Psychology                        
+✏️Civics
+✏️Anthrophology 
              
                                            
  📝Class B
@@ -70,7 +69,8 @@ Freshman Tricks በ2015 አመተ ምህረት የተጀመረ digital (online) 
 ✏️ Anthropology
 ✏️Civics
 ✏️Entrepreneurship
-
+✏️History
+✏️Economics
 
 📝 Class C
 ✏️Maths for natural
@@ -85,20 +85,22 @@ Freshman Tricks በ2015 አመተ ምህረት የተጀመረ digital (online) 
 
 📝 Class D
 ✏️ English Skill 1
-✏️Maths for social
 ✏️ Psychology
-✏️ Emerging technology
+✏️ Global trend
 ✏️ Anthropology
 ✏️Logic and critical thinking
-✏️Entrepreneurship
+✏️History
+✏️Civics
+✏️Economics
 
 📘 የቪዲዮ ትምህርት የእያንዳንዱ topic ትምህርት ከኖቶቹ ጋር
 📘እያንዳንዶቹ ቻፕተሮች እንዳለቁ ሰፋ ያሉ ወርክሽቶች ከነመልሶቻቸው
-📘በየወሩ የሚሰጡ የ Quiz ፈተናወች 
+📘በየሳምንቱ የሚሰጡ የ Quiz ፈተናወች 
 📘መጨረሻ ላይ የሚሰጡ final ፈተናወች 
 
 
 🕹ለበለጠ መረጃ የ Freshman Tricksን ማህበራዊ ሚዲያዎች ይቀላቀላሉ ።
+
 <a href='https://youtube.com/@freshman_tricks?si=J5c_3uzImqq1AP55'>💎YOU TUBE</a>
 <a href='https://t.me/freshman_tricks'>💎Telegram</a>
 """
