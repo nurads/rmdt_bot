@@ -35,10 +35,10 @@ bot_name = "Freshman Tricks Bot"
 pricing = 500
 
 channels = {
-    "class a": {"link": "https://t.me/+BkNC18yzWiIwNmRk", "id": -1002419752883},
+    "class a": {"link": "https://t.me/+Qbqk4EH8QVk3OWNk", "id": -1002419752883},
     "class b": {"link": "https://t.me/+8MTwQ16Xx5FmNWJk", "id": -1002462494621},
     "class c": {"link": "https://t.me/+JuEqcFOCJno2MDc0", "id": -1002473698743},
-    "class d": {"link": "https://t.me/+zdID3XkJ3MQ2MmZk", "id": -1002384868135},
+    "class d": {"link": "https://t.me/+0ryxUqkw2GpmOWJk", "id": -1002384868135},
 }
 
 
@@ -230,6 +230,18 @@ def reg_handler(message, grade=None, stream=None):
             message.chat.id, "Already Registered🚫", reply_markup=get_keyboard()
         )
         return
+    # bot.send_message(
+    #     message.chat.id,
+    #     "What stream are you in?",
+    #     reply_markup=get_inline_keyboard(
+    #         _natural="Natural",
+    #         _social="Social",
+    #         # _class_c="Class C",
+    #         # _class_d="Class D",
+    #     ).add(
+    #         InlineKeyboardButton("cancel", callback_data="cancel"),
+    #     ),
+    # )
     bot.send_message(
         message.chat.id,
         "What stream are you in?",
@@ -244,15 +256,21 @@ def reg_handler(message, grade=None, stream=None):
     )
 
 
-@bot.callback_query_handler(
-    func=lambda call: call.data
-    in ["_natural", "_social", "_class_a", "_class_b", "_class_c", "_class_d"]
-)
+@bot.callback_query_handler(func=lambda call: call.data in ["_natural", "_social"])
 def stream_call_back(call: CallbackQuery):
     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
     tg_user = call.from_user
+    # TODO
+
+
+@bot.callback_query_handler(
+    func=lambda call: call.data in ["_class_a", "_class_b", "_class_c", "_class_d"]
+)
+def class_call_back(call: CallbackQuery):
+    con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
+    tg_user = call.from_user
     # con.stream = call.data.replace("_", "")
-    if call.data in ["_class_a", "_class_b"]:
+    if call.data in ["_class_a", "_class_c"]:
         con.stream = "natural"
     else:
         con.stream = "social"
