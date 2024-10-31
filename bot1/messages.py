@@ -32,7 +32,6 @@ about_us_msg = """
 📘መጨረሻ ላይ የሚሰጡ በኢንትራንስ ፎርም  የተዘጋጁ ኦንላይን ሞዴል ፈተናወች
 
 
-
 🕹ለበለጠ መረጃ የ Remedial Tricksን ማህበራዊ ሚዲያዎች ይቀላቀላሉ ።
 <a href='https://youtube.com/@freshman_tricks?si=J5c_3uzImqq1AP55'>💎YOU TUBE</a>
 <a href='https://t.me/remedial_tricks'>💎Telegram</a>
@@ -63,7 +62,6 @@ about_us_msg_bot2 = """
                                            
  📝Class B
 ✏️ English Skill 1
-✏️Maths for social
 ✏️ Global trend
 ✏️ Emerging technology
 ✏️ Anthropology
