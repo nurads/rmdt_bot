@@ -33,7 +33,7 @@ about_us_msg = """
 
 
 🕹ለበለጠ መረጃ የ Remedial Tricksን ማህበራዊ ሚዲያዎች ይቀላቀላሉ ።
-<a href='https://youtube.com/@freshman_tricks?si=J5c_3uzImqq1AP55'>💎YOU TUBE</a>
+<a href='https://youtube.com/@remedial_tricks?si=oyuJaKHVzGnGwrj9'>💎YOU TUBE</a>
 <a href='https://t.me/remedial_tricks'>💎Telegram</a>
 """
 
