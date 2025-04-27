@@ -355,6 +355,10 @@ def selected_payment_option_call_back(call):
             "msg": "🚩አዋሽ ባንክ",
             "acc": "013351173115900",
         },
+        "_payment_coop": {
+            "msg": "🚩ኮፕሬቲቭ ባንክ",
+            "acc": "1000400219994",
+        },
     }
     msg = f"""
     {data[call.data]["msg"]}

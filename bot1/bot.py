@@ -30,7 +30,7 @@ tg_channel_url_social = "https://t.me/+A17J9kDWstcxMjBk"
 tg_channel_id_natural = -1002427871456
 tg_channel_id_social = -1002426643683
 bot_name = "Remedial Tricks Bot"
-pricing = 500
+pricing = 300
 contact_us_msg = rm_contact_us
 
 
@@ -294,26 +294,6 @@ def reg_confirm(call):
             reply_markup=get_payment_options(),
         )
 
-        # msg = f"""
-        # Choose which class you want to be in
-        # """
-        # reply = InlineKeyboardMarkup()
-        # reply.add(
-        #     InlineKeyboardButton("Full Special class", callback_data="full_special")
-        # )
-        # reply.add(
-        #     InlineKeyboardButton(
-        #         "Only English and Aptitude", callback_data="english_aptitude"
-        #     )
-        # )
-        # reply.add(
-        #     InlineKeyboardButton(
-        #         "Selective Special class(only 50% of 4 subjects)",
-        #         callback_data="selective_special",
-        #     )
-        # )
-        # bot.send_message(call.message.chat.id, msg, reply_markup=reply)
-
 
 @bot.callback_query_handler(func=lambda call: re.match(r"_payment_*", call.data))
 def selected_payment_option_call_back(call):
@@ -350,6 +330,10 @@ def selected_payment_option_call_back(call):
         "_payment_aw": {
             "msg": "🚩አዋሽ ባንክ",
             "acc": "013351173115900",
+        },
+        "_payment_coop": {
+            "msg": "🚩ኮፕሬቲቭ ባንክ",
+            "acc": "1000400219994",
         },
     }
     msg = f"""
