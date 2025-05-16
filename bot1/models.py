@@ -33,7 +33,7 @@ class Contact(models.Model):
 
 
 class Management(models.Model):
-    name = models.CharField(default="Admin")
+    name = models.CharField(default="Admin", max_length=255)
     registration_open = models.BooleanField(default=True)
 
     @staticmethod

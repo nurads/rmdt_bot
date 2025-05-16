@@ -5,7 +5,7 @@ import os
 from django.core.management.utils import get_random_secret_key
 
 # get_random_secret_key()
-load_dotenv()
+load_dotenv(override=True)
 env = os.environ.get
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -60,6 +60,10 @@ TEMPLATES = [
 WSGI_APPLICATION = "core.wsgi.application"
 
 DATABASES = {
+    "sqlite": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    },
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": env("PGDATABASE"),
@@ -69,7 +73,7 @@ DATABASES = {
         "PORT": "5432",
         "OPTIONS": {"sslmode": "require"},
         "DISABLE_SERVER_SIDE_CURSORS": True,
-    }
+    },
 }
 AUTH_PASSWORD_VALIDATORS = [
     {

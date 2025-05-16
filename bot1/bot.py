@@ -246,12 +246,14 @@ def reg_handler(message, grade=None, stream=None):
 ########################### Call Back Queries ########################################
 
 
-@bot.callback_query_handler(func=lambda call: call.data in ["_natural", "_social"])
-def stream_call_back(call: CallbackQuery):
+@bot.callback_query_handler(
+    func=lambda call: call.data in ["_natural_revision", "_social_revision"]
+)
+def program_call_back(call: CallbackQuery):
     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
     tg_user = call.from_user
-    con.stream = call.data.replace("_", "")
-    con.save()
+    # con.stream = call.data.replace("_", "")
+    # con.save()
     bot.delete_message(call.message.chat.id, call.message.id)
     msg = f"""
         <b>Confirm Your Registration</b>
@@ -269,6 +271,58 @@ def stream_call_back(call: CallbackQuery):
             InlineKeyboardButton("cancel", callback_data="cancel"),  # TODO
         ),
     )
+
+
+@bot.callback_query_handler(func=lambda call: call.data in ["_natural", "_social"])
+def stream_call_back(call: CallbackQuery):
+    con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
+    tg_user = call.from_user
+    con.stream = call.data.replace("_", "")
+    con.save()
+    bot.delete_message(call.message.chat.id, call.message.id)
+    # msg = f"""
+    #     <b>Confirm Your Registration</b>
+    #     -----------------------------------
+    #     Name: {tg_user.first_name}
+    #     Grade: Remedial(2017)
+    #     Stream: {con.stream}
+    #     Required Payment: {pricing} ETB
+    # """
+
+    if call.data == "_natural":
+        bot.send_message(
+            call.message.chat.id,
+            "Which program are you in?",
+            reply_markup=get_inline_keyboard(
+                _natural_revision="2017 Remedial Natural revision"
+            )
+            # .add(
+            #     InlineKeyboardButton(
+            #         "2017 Remedial Social revision", callback_data="_social_revision"
+            #     )
+            # )
+            .add(
+                InlineKeyboardButton("back", callback_data="_edit_stream"),  # TODO
+                InlineKeyboardButton("cancel", callback_data="cancel"),  # TODO
+            ),
+        )
+    else:
+        bot.send_message(
+            call.message.chat.id,
+            "Which program are you in?",
+            reply_markup=get_inline_keyboard(
+                _social_revision="2017 Remedial Social revision"
+            )
+            # .add(
+            #     InlineKeyboardButton(
+            #         "2017 Remedial Social revision", callback_data="_social_revision"
+            #     )
+            # )
+            .add(
+                InlineKeyboardButton("back", callback_data="_edit_stream"),  # TODO
+                InlineKeyboardButton("cancel", callback_data="cancel"),  # TODO
+            ),
+        )
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "_edit_stream")
