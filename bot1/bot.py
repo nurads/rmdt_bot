@@ -26,6 +26,8 @@ bot_number = 1
 
 tg_channel_url_natural = "https://t.me/+ysuPgHQ-S1M5NjBk"
 tg_channel_url_social = "https://t.me/+A17J9kDWstcxMjBk"
+tg_channel_url_natural = "https://t.me/+moJOqtWvQ11lMGQ0"
+tg_channel_url_social = "https://t.me/+yPz4dnZPCFRmNGU8"
 
 tg_channel_id_natural = -1002427871456
 tg_channel_id_social = -1002426643683
