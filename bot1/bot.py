@@ -49,6 +49,7 @@ def get_payment_options():
     reply.add(InlineKeyboardButton("🚩አቢሲኒያ ባንክ", callback_data="_payment_ab"))
     reply.add(InlineKeyboardButton("🚩አባይ ባንክ", callback_data="_payment_aba"))
     reply.add(InlineKeyboardButton("🚩አዋሽ ባንክ", callback_data="_payment_aw"))
+    reply.add(InlineKeyboardButton("🚩ኮፕሬቲቭ ባንክ", callback_data="_payment_coop"))
     return reply
 
 
