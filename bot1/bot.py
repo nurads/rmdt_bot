@@ -32,7 +32,7 @@ tg_channel_url_social = "https://t.me/+yPz4dnZPCFRmNGU8"
 tg_channel_id_natural = -1002427871456
 tg_channel_id_social = -1002426643683
 bot_name = "Remedial Tricks Bot"
-pricing = 300
+pricing = 100
 contact_us_msg = rm_contact_us
 
 
