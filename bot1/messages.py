@@ -45,60 +45,20 @@ contact_us_msg = """
 """
 
 
-about_us_msg_bot2 = """
-📝Freshman Tricks በ 2017 ዓ.ም ለተማሪወች ምን አይነት ፕሮግራሞችን ይዙኣል❓
+about_us_msg_bot2 = """About us 
 
+📝Freshman Tricks በ 2018 ዓ.ም ለተማሪወች ምን አይነት ፕሮግራሞችን ይዙኣል❓ 
 
-📝Class A         
-✏️English Skill 1                      
-✏️Math for natural            
-✏️General Physics               
-✏️Geography                        
-✏️Logic and Critical thinking
-✏️Psychology                        
-✏️Civics
-✏️Anthrophology 
-             
-                                           
- 📝Class B
-✏️ English Skill 1
-✏️ Global trend
-✏️ Emerging technology
-✏️ Anthropology
-✏️Civics
-✏️Entrepreneurship
-✏️History
-✏️Economics
-
-📝 Class C
-✏️Maths for natural
-✏️ English Skill 1
-✏️General Physics               
-✏️Geography                        
-✏️ Global trend
-✏️ Emerging technology
-✏️ Anthropology
-✏️Civics
-✏️Entrepreneurship
-
-📝 Class D
-✏️ English Skill 1
-✏️ Psychology
-✏️ Global trend
-✏️ Anthropology
-✏️Logic and critical thinking
-✏️History
-✏️Civics
-✏️Economics
+Freshman Tricks በ2018 ዓ.ም ለሚመዘገቡ ተማሪዎች የሙሉ ክላስ package ያቀረበ ሲሆን በየትኛውም ዩኒቨርሲቲ ወይም ኮሌጅ ላይ የሚሰጡትን የ freshman common course ኦች የሚያቀርብ ይሆናል ። የመመዝገቢያ ዋጋ 1000 ብር ሲሆን ተማሪዎች አንድ ጊዜ ከተመዘገቡ ተጨማሪ ክፍያ አናስከፍላቸውም ።በዚህም 
 
 📘 የቪዲዮ ትምህርት የእያንዳንዱ topic ትምህርት ከኖቶቹ ጋር
 📘እያንዳንዶቹ ቻፕተሮች እንዳለቁ ሰፋ ያሉ ወርክሽቶች ከነመልሶቻቸው
-📘በየሳምንቱ የሚሰጡ የ Quiz ፈተናወች 
-📘መጨረሻ ላይ የሚሰጡ final ፈተናወች 
+📘የተለያዩ ዩኒቨርሲቲዎች Mid and Final exam collections 
+📘በኦላይን የሚሰጡ mid and  final ፈተናወች 
+📘በተጨማሪም COC ፈተና ያላቸውን ዲፓርትመንቶች ለምትገቡ ተማሪዎች ነፃ ስልጠና 
 
-
-🕹ለበለጠ መረጃ የ Freshman Tricksን ማህበራዊ ሚዲያዎች ይቀላቀላሉ ።
-
+🕹ለበለጠ መረጃ 
+🎯0902100732
 <a href='https://youtube.com/@freshman_tricks?si=J5c_3uzImqq1AP55'>💎YOU TUBE</a>
 <a href='https://t.me/freshman_tricks'>💎Telegram</a>
 """

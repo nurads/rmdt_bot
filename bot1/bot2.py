@@ -37,8 +37,8 @@ pricing = 1000
 channels = {
     "class a": {"link": "https://t.me/+Qbqk4EH8QVk3OWNk", "id": -1002419752883},
     "freshman class for 2018": {
-        "link": "https://t.me/+Qbqk4EH8QVk3OWNk",
-        "id": -1002419752883,
+        "link": "https://t.me/+xup8moOjHQBjNzFk",
+        "id": -1002727288430,
     },
     "class b": {"link": "https://t.me/+8MTwQ16Xx5FmNWJk", "id": -1002462494621},
     "class c": {"link": "https://t.me/+JuEqcFOCJno2MDc0", "id": -1002473698743},
