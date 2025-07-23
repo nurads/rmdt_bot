@@ -35,7 +35,8 @@ bot_name = "Freshman Tricks Bot"
 pricing = 1000
 
 channels = {
-    "class a": {"link": "https://t.me/+Qbqk4EH8QVk3OWNk", "id": -1002419752883},
+    # "class a": {"link": "https://t.me/+Qbqk4EH8QVk3OWNk", "id": -1002419752883},
+    "class a": {"link": "https://t.me/+xup8moOjHQBjNzFk", "id": -1002727288430},
     "freshman class for 2018": {
         "link": "https://t.me/+xup8moOjHQBjNzFk",
         "id": -1002727288430,
