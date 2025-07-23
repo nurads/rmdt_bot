@@ -32,10 +32,14 @@ tg_channel_url_social = "https://t.me/+8MTwQ16Xx5FmNWJk"
 # tg_channel_id_natural = -1002419752883
 # tg_channel_id_social = -1002462494621
 bot_name = "Freshman Tricks Bot"
-pricing = 500
+pricing = 1000
 
 channels = {
     "class a": {"link": "https://t.me/+Qbqk4EH8QVk3OWNk", "id": -1002419752883},
+    "freshman class for 2018": {
+        "link": "https://t.me/+Qbqk4EH8QVk3OWNk",
+        "id": -1002419752883,
+    },
     "class b": {"link": "https://t.me/+8MTwQ16Xx5FmNWJk", "id": -1002462494621},
     "class c": {"link": "https://t.me/+JuEqcFOCJno2MDc0", "id": -1002473698743},
     "class d": {"link": "https://t.me/+0ryxUqkw2GpmOWJk", "id": -1002384868135},
@@ -244,12 +248,12 @@ def reg_handler(message, grade=None, stream=None):
     # )
     bot.send_message(
         message.chat.id,
-        "What stream are you in?",
+        "What class you are registering for?",
         reply_markup=get_inline_keyboard(
-            _class_a="Class A",
-            _class_b="Class B",
-            _class_c="Class C",
-            _class_d="Class D",
+            _class_a="Freshman class for 2018",
+            # _class_b="Class B",
+            # _class_c="Class C",
+            # _class_d="Class D",
         ).add(
             InlineKeyboardButton("cancel", callback_data="cancel"),
         ),
