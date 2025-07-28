@@ -275,10 +275,11 @@ def class_call_back(call: CallbackQuery):
     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
     tg_user = call.from_user
     # con.stream = call.data.replace("_", "")
-    if call.data in ["_class_a", "_class_c"]:
-        con.stream = "natural"
-    else:
-        con.stream = "social"
+    # if call.data in ["_class_a", "_class_c"]:
+    #     con.stream = "natural"
+    # else:
+    #     con.stream = "social"
+    con.stream = "General"
     con.selected_class = call.data.replace("_", " ").strip()
     con.save()
     bot.delete_message(call.message.chat.id, call.message.id)
