@@ -275,7 +275,7 @@ def class_call_back(call: CallbackQuery):
     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
     tg_user = call.from_user
     
-    con.stream = "Both Natural and Social"
+    con.stream = "Natural & Social"
     con.selected_class = call.data.replace("_", " ").strip()
     con.save()
     bot.delete_message(call.message.chat.id, call.message.id)
@@ -285,7 +285,6 @@ def class_call_back(call: CallbackQuery):
         Name: {tg_user.first_name}
         Grade:Freshman(2017)
         Stream: {con.stream},
-        Class: {con.selected_class}
         Required Payment: {pricing} ETB
         """
     bot.send_message(
