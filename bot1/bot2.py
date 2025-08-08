@@ -274,8 +274,8 @@ def stream_call_back(call: CallbackQuery):
 def class_call_back(call: CallbackQuery):
     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
     tg_user = call.from_user
-    
-    con.stream = "Natural & Social"
+
+    con.stream = "Both Natural & Social"
     con.selected_class = call.data.replace("_", " ").strip()
     con.save()
     bot.delete_message(call.message.chat.id, call.message.id)
