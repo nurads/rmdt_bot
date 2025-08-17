@@ -54,20 +54,21 @@ def get_payment_options():
     reply = InlineKeyboardMarkup()
 
     # Existing payment options
-    reply.add(InlineKeyboardButton("🚩ቴሌ ብር ", callback_data="_payment_tb"))
-    reply.add(InlineKeyboardButton("🚩የኢትዮጵያ ንግድ ባንክ", callback_data="_payment_cbe"))
-    reply.add(InlineKeyboardButton("🚩ዳሸን ባንክ", callback_data="_payment_dsh"))
-    reply.add(InlineKeyboardButton("🚩አማራ ባንክ", callback_data="_payment_am"))
+    reply.add(InlineKeyboardButton("🟢ቴሌ ብር ", callback_data="_payment_tb"))
+    reply.add(InlineKeyboardButton("🟢የኢትዮጵያ ንግድ ባንክ", callback_data="_payment_cbe"))
+    reply.add(InlineKeyboardButton("🟢ዳሸን ባንክ", callback_data="_payment_dsh"))
+    reply.add(InlineKeyboardButton("🟢አማራ ባንክ", callback_data="_payment_am"))
     reply.add(
-        InlineKeyboardButton("🚩ኦሮሚያ international ባንክ", callback_data="_payment_oib")
+        InlineKeyboardButton("🟢ኦሮሚያ international ባንክ", callback_data="_payment_oib")
     )
-    reply.add(InlineKeyboardButton("🚩አቢሲኒያ ባንክ", callback_data="_payment_ab"))
-    reply.add(InlineKeyboardButton("🚩አባይ ባንክ", callback_data="_payment_aba"))
-    reply.add(InlineKeyboardButton("🚩አዋሽ ባንክ", callback_data="_payment_aw"))
+    reply.add(InlineKeyboardButton("🟢አቢሲኒያ ባንክ", callback_data="_payment_ab"))
+    reply.add(InlineKeyboardButton("🟢አባይ ባንክ", callback_data="_payment_aba"))
+    reply.add(InlineKeyboardButton("🟢አዋሽ ባንክ", callback_data="_payment_aw"))
+    reply.add(InlineKeyboardButton("🟢ኮፕሬቲቭ ባንክ", callback_data="_payment_coop"))
 
     # New AUT Exam option for 300 birr
     reply.add(
-        InlineKeyboardButton("🚩AUT Exam - 300 Birr", callback_data="_payment_aut_300")
+        InlineKeyboardButton("🟢AUT Exam - 300 Birr", callback_data="_payment_aut_300")
     )
 
     return reply
@@ -402,39 +403,39 @@ def selected_payment_option_call_back(call):
 
     data = {
         "_payment_tb": {
-            "msg": "🚩ቴሌ ብር",
+            "msg": "🟢ቴሌ ብር",
             "acc": "0927052140",
         },
         "_payment_cbe": {
-            "msg": "🚩የኢትዮጵያ ንግድ ባንክ",
+            "msg": "🟢የኢትዮጵያ ንግድ ባንክ",
             "acc": "1000390400668",
         },
         "_payment_dsh": {
-            "msg": "🚩ዳሸን ባንክ",
+            "msg": "🟢ዳሸን ባንክ",
             "acc": "5325387344011",
         },
         "_payment_am": {
-            "msg": "🚩አማራ ባንክ",
+            "msg": "🟢አማራ ባንክ",
             "acc": "9900008823565",
         },
         "_payment_oib": {
-            "msg": "🚩ኦሮሚያ international ባንክ =6047345",
+            "msg": "🟢ኦሮሚያ international ባንክ =6047345",
             "acc": "6047345",
         },
         "_payment_ab": {
-            "msg": "🚩አቢሲኒያ ባንክ",
+            "msg": "🟢አቢሲኒያ ባንክ",
             "acc": "157584488",
         },
         "_payment_aba": {
-            "msg": "🚩አባይ ባንክ",
+            "msg": "🟢አባይ ባንክ",
             "acc": "1349011003253717",
         },
         "_payment_aw": {
-            "msg": "🚩አዋሽ ባንክ",
+            "msg": "🟢አዋሽ ባንክ",
             "acc": "013351173115900",
         },
         "_payment_coop": {
-            "msg": "🚩ኮፕሬቲቭ ባንክ",
+            "msg": "🟢ኮፕሬቲቭ ባንክ",
             "acc": "1000400219994",
         },
     }
