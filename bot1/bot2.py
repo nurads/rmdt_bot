@@ -117,12 +117,6 @@ def start_hadler(message):
     )
 
 
-updates = bot.get_updates()
-for update in updates:
-    if update.channel_post:  # Check if the update is a channel post
-        print("Channel ID:", update.channel_post.chat.id)
-
-
 @bot.message_handler(func=lambda msg: msg.text.lower() == "help")
 @bot.message_handler(commands=["help"])
 def help_handler(message):
