@@ -43,7 +43,7 @@ channels = {
         "id": -1002727288430,
     },
     # ... other classes ...
-    "AUT Exam": {"link": "https://t.me/AUTExamChannel", "id": -1002941208553},
+    "UAT Exam": {"link": "https://t.me/AUTExamChannel", "id": -1002941208553},
     "class b": {"link": "https://t.me/+8MTwQ16Xx5FmNWJk", "id": -1002462494621},
     "class c": {"link": "https://t.me/+JuEqcFOCJno2MDc0", "id": -1002473698743},
     "class d": {"link": "https://t.me/+0ryxUqkw2GpmOWJk", "id": -1002384868135},
@@ -65,11 +65,6 @@ def get_payment_options():
     reply.add(InlineKeyboardButton("🟢አባይ ባንክ", callback_data="_payment_aba"))
     reply.add(InlineKeyboardButton("🟢አዋሽ ባንክ", callback_data="_payment_aw"))
     reply.add(InlineKeyboardButton("🟢ኮፕሬቲቭ ባንክ", callback_data="_payment_coop"))
-
-    # New AUT Exam option for 300 birr
-    reply.add(
-        InlineKeyboardButton("🟢AUT Exam - 300 Birr", callback_data="_payment_aut_300")
-    )
 
     return reply
 
@@ -264,7 +259,7 @@ def reg_handler(message, grade=None, stream=None):
         "What class you are registering for?",
         reply_markup=get_inline_keyboard(
             _class_a="Freshman class for 2018",
-            _aut_exam="AUT Exam Registration",  # <-- new button
+            _aut_exam="UAT Exam Registration",  # <-- new button
         ).add(
             InlineKeyboardButton("cancel", callback_data="cancel"),
         ),
@@ -309,11 +304,11 @@ def class_call_back(call: CallbackQuery):
         required_payment = 1000
         grade_text = "Class D"
     elif call.data == "_aut_exam":
-        con.stream = "AUT Exam"
-        con.selected_class = "AUT Exam"
+        con.stream = "UAT Exam"
+        con.selected_class = "UAT Exam"
         required_payment = 300
-        grade_text = "AUT Exam"
-        con.amount_to_pay = 300  # Set the new price
+        grade_text = "UAT Exam"
+        # con.amount_to_pay = 300  # Set the new price
 
     con.save()
     bot.delete_message(call.message.chat.id, call.message.id)
@@ -341,9 +336,9 @@ Required Payment: {required_payment} ETB
 #     tg_user = call.from_user
 
 #     if call.data == "_aut_exam":
-#         con.selected_class = "AUT Exam"
+#         con.selected_class = "UAT Exam"
 #         con.stream = "N/A"
-#         price = 300  # AUT Exam payment
+#         price = 300  # UAT Exam payment
 #     else:
 #         con.selected_class = call.data.replace("_", " ").strip()
 #         con.stream = "Both Natural & Social"
@@ -388,9 +383,12 @@ def reg_confirm(call):
 
         con.save()
 
+        pr = 300 if con.selected_class == "UAT Exam" else pricing
+
         bot.send_message(
             call.message.chat.id,
-            "🌸የክፍያ አማራጮች🌸|Payment Options",
+            f"🌸የክፍያ አማራጮች🌸\n\nPlease select a payment option to proceed with the registration. Pay amount of {pr} ETB",
+            # "🌸የክፍያ አማራጮች🌸|Payment Options",
             reply_markup=get_payment_options(),
         )
 
