@@ -43,7 +43,7 @@ channels = {
         "id": -1002727288430,
     },
     # ... other classes ...
-    "UAT Exam": {"link": "https://t.me/AUTExamChannel", "id": -1002941208553},
+    "UAT Exam": {"link": " https://t.me/+H1xihl9rt8w4MTJk", "id": -1003077513192},
     "class b": {"link": "https://t.me/+8MTwQ16Xx5FmNWJk", "id": -1002462494621},
     "class c": {"link": "https://t.me/+JuEqcFOCJno2MDc0", "id": -1002473698743},
     "class d": {"link": "https://t.me/+0ryxUqkw2GpmOWJk", "id": -1002384868135},
@@ -397,7 +397,7 @@ def reg_confirm(call):
 def selected_payment_option_call_back(call):
     bot.delete_message(call.message.chat.id, call.message.id)
     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
-    amount_to_show = con.amount_to_pay
+    amount_to_show = 300 if con.selected_class == "UAT Exam" else pricing
 
     data = {
         "_payment_tb": {
