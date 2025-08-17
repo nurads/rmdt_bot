@@ -26,8 +26,9 @@ bot = TeleBot(settings.BOT_TOKEN2, parse_mode="HTML", threaded=False)
 
 bot_number = 2
 contact_us_msg = fr_contact_us
-tg_channel_url_natural = "https://t.me/+BkNC18yzWiIwNmRk"
+tg_channel_url_natural = "https://t.me/AUTExamChannel"
 tg_channel_url_social = "https://t.me/+8MTwQ16Xx5FmNWJk"
+tg_channel_url_AUTexam = "https://t.me/+8MTwQ16Xx5FmNWJk"
 
 # tg_channel_id_natural = -1002419752883
 # tg_channel_id_social = -1002462494621
@@ -41,6 +42,8 @@ channels = {
         "link": "https://t.me/+xup8moOjHQBjNzFk",
         "id": -1002727288430,
     },
+    # ... other classes ...
+    "AUT Exam": {"link": "https://t.me/AUTExamChannel", "id": -1002941208553},
     "class b": {"link": "https://t.me/+8MTwQ16Xx5FmNWJk", "id": -1002462494621},
     "class c": {"link": "https://t.me/+JuEqcFOCJno2MDc0", "id": -1002473698743},
     "class d": {"link": "https://t.me/+0ryxUqkw2GpmOWJk", "id": -1002384868135},
@@ -49,6 +52,8 @@ channels = {
 
 def get_payment_options():
     reply = InlineKeyboardMarkup()
+
+    # Existing payment options
     reply.add(InlineKeyboardButton("🚩ቴሌ ብር ", callback_data="_payment_tb"))
     reply.add(InlineKeyboardButton("🚩የኢትዮጵያ ንግድ ባንክ", callback_data="_payment_cbe"))
     reply.add(InlineKeyboardButton("🚩ዳሸን ባንክ", callback_data="_payment_dsh"))
@@ -59,6 +64,12 @@ def get_payment_options():
     reply.add(InlineKeyboardButton("🚩አቢሲኒያ ባንክ", callback_data="_payment_ab"))
     reply.add(InlineKeyboardButton("🚩አባይ ባንክ", callback_data="_payment_aba"))
     reply.add(InlineKeyboardButton("🚩አዋሽ ባንክ", callback_data="_payment_aw"))
+
+    # New AUT Exam option for 300 birr
+    reply.add(
+        InlineKeyboardButton("🚩AUT Exam - 300 Birr", callback_data="_payment_aut_300")
+    )
+
     return reply
 
 
@@ -98,12 +109,18 @@ def get_inline_keyboard(**kwargs):
 @bot.message_handler(func=lambda msg: msg.text.lower() in ["start", "restart"])
 def start_hadler(message):
     tg_user = message.from_user
-
+    welcome_text = start_msg  # or a custom greeting
     bot.send_message(
         message.chat.id,
-        start_msg.format(tg_user.first_name),
-        reply_markup=get_keyboard(),
+        welcome_text,
+        reply_markup=get_keyboard(),  # show main menu buttons
     )
+
+
+updates = bot.get_updates()
+for update in updates:
+    if update.channel_post:  # Check if the update is a channel post
+        print("Channel ID:", update.channel_post.chat.id)
 
 
 @bot.message_handler(func=lambda msg: msg.text.lower() == "help")
@@ -252,9 +269,7 @@ def reg_handler(message, grade=None, stream=None):
         "What class you are registering for?",
         reply_markup=get_inline_keyboard(
             _class_a="Freshman class for 2018",
-            # _class_b="Class B",
-            # _class_c="Class C",
-            # _class_d="Class D",
+            _aut_exam="AUT Exam Registration",  # <-- new button
         ).add(
             InlineKeyboardButton("cancel", callback_data="cancel"),
         ),
@@ -269,24 +284,53 @@ def stream_call_back(call: CallbackQuery):
 
 
 @bot.callback_query_handler(
-    func=lambda call: call.data in ["_class_a", "_class_b", "_class_c", "_class_d"]
+    func=lambda call: call.data
+    in ["_class_a", "_class_b", "_class_c", "_class_d", "_aut_exam"]
 )
 def class_call_back(call: CallbackQuery):
     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
     tg_user = call.from_user
 
-    con.stream = "Both Natural & Social"
-    con.selected_class = call.data.replace("_", " ").strip()
+    if call.data == "_class_a":
+        con.stream = "Both Natural & Social"
+        con.selected_class = "Freshman class for 2018"
+        required_payment = 1000
+        grade_text = "Freshman(2018)"
+        con.amount_to_pay = 1000  # Set the default price
+
+    elif call.data == "_class_b":
+        con.stream = "Natural"
+        con.selected_class = "Class B"
+        required_payment = 1000
+        grade_text = "Class B"
+    elif call.data == "_class_c":
+        con.stream = "Social"
+        con.selected_class = "Class C"
+        required_payment = 1000
+        grade_text = "Class C"
+    elif call.data == "_class_d":
+        con.stream = "Both"
+        con.selected_class = "Class D"
+        required_payment = 1000
+        grade_text = "Class D"
+    elif call.data == "_aut_exam":
+        con.stream = "AUT Exam"
+        con.selected_class = "AUT Exam"
+        required_payment = 300
+        grade_text = "AUT Exam"
+        con.amount_to_pay = 300  # Set the new price
+
     con.save()
     bot.delete_message(call.message.chat.id, call.message.id)
+
     msg = f"""
-        <b>Confirm Your Registration</b>
-        -----------------------------------
-        Name: {tg_user.first_name}
-        Grade:Freshman(2017)
-        Stream: {con.stream},
-        Required Payment: {pricing} ETB
-        """
+<b>Confirm Your Registration</b>
+-----------------------------------
+Name: {tg_user.first_name}
+Grade: {grade_text}
+Stream: {con.stream}
+Required Payment: {required_payment} ETB
+"""
     bot.send_message(
         call.message.chat.id,
         msg,
@@ -295,6 +339,42 @@ def class_call_back(call: CallbackQuery):
             InlineKeyboardButton("cancel", callback_data="cancel"),
         ),
     )
+
+
+# def class_call_back(call: CallbackQuery):
+#     con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
+#     tg_user = call.from_user
+
+#     if call.data == "_aut_exam":
+#         con.selected_class = "AUT Exam"
+#         con.stream = "N/A"
+#         price = 300  # AUT Exam payment
+#     else:
+#         con.selected_class = call.data.replace("_", " ").strip()
+#         con.stream = "Both Natural & Social"
+#         price = pricing  # Freshman fee
+
+
+#     con.stream = "Both Natural & Social"
+#     con.selected_class = call.data.replace("_", " ").strip()
+#     con.save()
+#     bot.delete_message(call.message.chat.id, call.message.id)
+#     msg = f"""
+#         <b>Confirm Your Registration</b>
+#         -----------------------------------
+#         Name: {tg_user.first_name}
+#         Grade: {grade_text}
+#         Stream: {con.stream},
+#         Required Payment: {pricing} ETB
+#         """
+#     bot.send_message(
+#         call.message.chat.id,
+#         msg,
+#         reply_markup=get_inline_keyboard(reg_confirm="Confirm").add(
+#             InlineKeyboardButton("back", callback_data="_edit_stream"),
+#             InlineKeyboardButton("cancel", callback_data="cancel"),
+#         ),
+#     )
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "_edit_stream")
@@ -323,6 +403,9 @@ def reg_confirm(call):
 @bot.callback_query_handler(func=lambda call: re.match(r"_payment_*", call.data))
 def selected_payment_option_call_back(call):
     bot.delete_message(call.message.chat.id, call.message.id)
+    con = Contact.objects.filter(tg_id=call.from_user.id, bot_number=bot_number).first()
+    amount_to_show = con.amount_to_pay
+
     data = {
         "_payment_tb": {
             "msg": "🚩ቴሌ ብር",
@@ -361,15 +444,17 @@ def selected_payment_option_call_back(call):
             "acc": "1000400219994",
         },
     }
+
     msg = f"""
     {data[call.data]["msg"]}
     
-    Name:  Yared Getachew Teshome
+    Name: Yared Getachew Teshome
     Account: {data[call.data]["acc"]}
-    amount: {pricing} ETB
+    amount: {amount_to_show} ETB
     ------------------
     Upload Receipt After Payment.
     """
+
     bot.send_message(
         call.message.chat.id,
         msg,
