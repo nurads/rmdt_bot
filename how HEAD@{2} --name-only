@@ -1,0 +1,23 @@
+[33m6d8403a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mclean-taceke-dev[m[33m, [m[1;31mupstream/main[m[33m, [m[1;31mupstream/HEAD[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/clean-taceke-dev[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mbackup-taceke-dev[m[33m)[m HEAD@{0}: reset: moving to upstream/main
+[33m4dfc51b[m HEAD@{1}: checkout: moving from clean-taceke-dev to clean-taceke-dev
+[33m4dfc51b[m HEAD@{2}: commit (initial): updated bot for ET Exam
+[33m5f955d0[m[33m ([m[1;32mtaceke-dev[m[33m)[m HEAD@{3}: commit: updated commit of cleaned bot project
+[33m675e876[m[33m ([m[1;32mtemp-main[m[33m)[m HEAD@{4}: checkout: moving from temp-main to taceke-dev
+[33m675e876[m[33m ([m[1;32mtemp-main[m[33m)[m HEAD@{5}: checkout: moving from taceke-dev to temp-main
+[33m675e876[m[33m ([m[1;32mtemp-main[m[33m)[m HEAD@{6}: commit: Remove .env from repo
+[33mc560075[m HEAD@{7}: commit: Ignore .env and venv
+[33mec0e669[m HEAD@{8}: rebase (abort): returning to refs/heads/taceke-dev
+[33m544a7b7[m HEAD@{9}: commit: updated commit for bot2
+[33m6d8403a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mclean-taceke-dev[m[33m, [m[1;31mupstream/main[m[33m, [m[1;31mupstream/HEAD[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/clean-taceke-dev[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mbackup-taceke-dev[m[33m)[m HEAD@{10}: rebase (start): checkout upstream/main
+[33mec0e669[m HEAD@{11}: checkout: moving from taceke-dev to taceke-dev
+[33mec0e669[m HEAD@{12}: reset: moving to HEAD
+[33mec0e669[m HEAD@{13}: checkout: moving from taceke-dev to taceke-dev
+[33mec0e669[m HEAD@{14}: reset: moving to HEAD~1
+[33mf016f13[m[33m ([m[1;32mmain[m[33m)[m HEAD@{15}: checkout: moving from taceke-dev to taceke-dev
+[33mf016f13[m[33m ([m[1;32mmain[m[33m)[m HEAD@{16}: checkout: moving from taceke-dev to taceke-dev
+[33mf016f13[m[33m ([m[1;32mmain[m[33m)[m HEAD@{17}: checkout: moving from main to taceke-dev
+[33mf016f13[m[33m ([m[1;32mmain[m[33m)[m HEAD@{18}: commit: Add my bot2.py implementation
+[33mec0e669[m HEAD@{19}: Branch: renamed refs/heads/main to refs/heads/main
+[33mec0e669[m HEAD@{21}: Branch: renamed refs/heads/main to refs/heads/main
+[33mec0e669[m HEAD@{23}: Branch: renamed refs/heads/master to refs/heads/main
+[33mec0e669[m HEAD@{25}: commit (initial): Initial commit of local code for bot2.py.
