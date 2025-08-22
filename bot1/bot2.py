@@ -38,7 +38,7 @@ pricing = 1000
 channels = {
     # "class a": {"link": "https://t.me/+Qbqk4EH8QVk3OWNk", "id": -1002419752883},
     "class a": {"link": "https://t.me/+xup8moOjHQBjNzFk", "id": -1002727288430},
-    "freshman class for 2018": {
+    "Freshman class for 2018": {
         "link": "https://t.me/+xup8moOjHQBjNzFk",
         "id": -1002727288430,
     },
@@ -446,6 +446,8 @@ def selected_payment_option_call_back(call):
     amount: {amount_to_show} ETB
     ------------------
     Upload Receipt After Payment.
+    
+    Please click upload receipt before sending a file
     """
 
     bot.send_message(
