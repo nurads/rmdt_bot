@@ -284,24 +284,24 @@ def class_call_back(call: CallbackQuery):
     if call.data == "_class_a":
         con.stream = "Both Natural & Social"
         con.selected_class = "Freshman class for 2018"
-        required_payment = 1000
+        required_payment = 750
         grade_text = "Freshman(2018)"
-        con.amount_to_pay = 1000  # Set the default price
+        con.amount_to_pay = 750  # Set the default price
 
     elif call.data == "_class_b":
         con.stream = "Natural"
         con.selected_class = "Class B"
-        required_payment = 1000
+        required_payment = 750
         grade_text = "Class B"
     elif call.data == "_class_c":
         con.stream = "Social"
         con.selected_class = "Class C"
-        required_payment = 1000
+        required_payment = 750
         grade_text = "Class C"
     elif call.data == "_class_d":
         con.stream = "Both"
         con.selected_class = "Class D"
-        required_payment = 1000
+        required_payment = 750
         grade_text = "Class D"
     elif call.data == "_aut_exam":
         con.stream = "UAT Exam"
