@@ -33,7 +33,7 @@ tg_channel_url_AUTexam = "https://t.me/+8MTwQ16Xx5FmNWJk"
 # tg_channel_id_natural = -1002419752883
 # tg_channel_id_social = -1002462494621
 bot_name = "Freshman Tricks Bot"
-pricing = 1000
+pricing = 750
 
 channels = {
     # "class a": {"link": "https://t.me/+Qbqk4EH8QVk3OWNk", "id": -1002419752883},
