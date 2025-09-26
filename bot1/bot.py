@@ -24,13 +24,13 @@ bot = TeleBot(settings.BOT_TOKEN, parse_mode="HTML", threaded=False)
 
 bot_number = 1
 
-tg_channel_url_natural = "https://t.me/+ysuPgHQ-S1M5NjBk"
-tg_channel_url_social = "https://t.me/+A17J9kDWstcxMjBk"
-tg_channel_url_natural = "https://t.me/+moJOqtWvQ11lMGQ0"
-tg_channel_url_social = "https://t.me/+yPz4dnZPCFRmNGU8"
+tg_channel_url_natural = "https://t.me/+e4At7ARDUr42OGQ8"
+# tg_channel_url_social = "https://t.me/+A17J9kDWstcxMjBk"
+# tg_channel_url_natural = "https://t.me/+moJOqtWvQ11lMGQ0"
+tg_channel_url_social = "https://t.me/+N34eJQgVf4NmMWI0"
 
-tg_channel_id_natural = -1002427871456
-tg_channel_id_social = -1002426643683
+tg_channel_id_natural = -1002777415741
+tg_channel_id_social = -1003090788132
 bot_name = "Remedial Tricks Bot"
 pricing = 750
 contact_us_msg = rm_contact_us
